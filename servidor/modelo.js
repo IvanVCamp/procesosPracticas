@@ -31,3 +31,4 @@ function Sistema() {
 function Usuario(nick) {
     this.nick = nick;
 }
+module.exports.Sistema=Sistema

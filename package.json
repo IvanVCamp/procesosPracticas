@@ -1,0 +1,19 @@
+{
+  "name": "package",
+  "version": "1.0.0",
+  "description": "a",
+  "main": "modelo.js",
+  "scripts": {
+    "testW": "node_modules\\.bin\\jasmine-node servidor",
+    "test": "./node_modules/.bin/jasmine-node servidor"
+  },
+  "author": "Iván Vela",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-session": "^2.1.0",
+    "express": "^4.21.0",
+    "jasmine-node": "^3.0.0",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0"
+  }
+}
