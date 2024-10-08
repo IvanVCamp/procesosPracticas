@@ -1,34 +1,51 @@
-function Sistema() {
-    this.usuarios = {};
+function Sistema(){
+    this.usuarios={}; //this.usuarios=[]
+    this.agregarUsuario=function(nick){
+        let res={"nick":-1}; 
+        if (!this.usuarios[nick]){ 
+            this.usuarios[nick]=new Usuario(nick);
+            res.nick=nick; 
+            console.log("Nuevo usuario en el sistem: "+nick);
+        } 
+        else{ 
+            console.log("el nick "+nick+" está en uso"); 
+        } return res;
+    }
     this.obtenerUsuarios=function(){
         return this.usuarios;
     }
-    this.agregarUsuario = function(nick) {
-        if(!this.usuarios[nick]) {
-            this.usuarios[nick] = new Usuario(nick);
-        } 
+    this.obtenerTodosNick=function(){
+        return Object.keys(this.usuarios);
     }
-    this.eliminarUsuario = function(nick) {
-        res=false;
-        if(this.usuarios[nick]) {
+    this.usuarioActivo=function(nick){
+        //return !(this.usuarios[nick]==undefined)
+        let res={activo:false};
+        res.activo=(nick in this.usuarios);
+        return res;
+    }
+    this.eliminarUsuario=function(nick){
+        let res={nick:-1};
+        if (this.usuarios[nick]){
             delete this.usuarios[nick];
-            res=true;
+            res.nick=nick;
+            console.log("Usuario "+nick+" eliminado");
+        }
+        else{
+            console.log("El usuario no existe");
         }
         return res;
     }
-
-    this.usuarioActivo = function(nick) {
-        res=false;
-        if(this.usuarios[nick]) {
-            res=true;
-        }
+    this.numeroUsuarios=function(){
+        let lista=Object.keys(this.usuarios);
+        let res={num:lista.length};
         return res;
     }
-    this.numeroUsuarios = function() {
-        return Object.keys(this.usuarios).length;
-    }
-}  
-function Usuario(nick) {
-    this.nick = nick;
 }
-module.exports.Sistema=Sistema
+
+function Usuario(nick){
+    this.nick=nick;
+    this.email;
+    this.clave;
+}
+
+module.exports.Sistema=Sistema;
