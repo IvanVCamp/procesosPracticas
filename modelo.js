@@ -38,5 +38,4 @@ function Usuario(nick) {
     this.nick = nick;
 }
 
-// Exportar la clase Sistema
 module.exports = Sistema;
